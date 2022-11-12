@@ -1,0 +1,18 @@
+# exclude node modules
+node_modules
+# exclude package-lock.json
+package-lock.json
+# exclude eslint config
+.eslint*
+# exclude certificate and private key
+.server.*
+# exclude build
+build
+# exclude test uploads
+uploads/*
+# exclude debug / settings
+.vscode
+# exclude jest coverage files
+coverage
+# exclude irrelevant files
+*.old

@@ -1,0 +1,23 @@
+# The following files/folders will not be copied to the container
+node_modules
+
+# config files
+.eslint*
+.dockerignore
+.gitignore
+nodemon.json
+vite.*
+
+# debug files
+.vscode
+
+# development assets
+static
+
+# test files
+*.test.js
+
+# project specific
+.git
+uploads/*
+README.md

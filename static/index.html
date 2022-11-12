@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- page title -->
+        <title>Welcome</title>
+        <!-- file metadata -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="mulekick" />
+        <meta name="description" content="welcome guys" />
+    </head>
+    <body>
+        <main>
+            <span class="large">Welcome to the home page</span>
+            <span class="small highlight">This site supports resource fetching:</span>
+            <span class="small" id="fetch"></span>
+            <span class="small highlight">This site supports JSON web tokens:
+                <button type="button" id="tokenplease">request a token</button>
+            </span>
+            <span class="small" id="protected"></span>
+            <span class="small highlight">This site supports file uploads (max size 100 kb):</span>
+            <form enctype="multipart/form-data" method="post">
+                <p><input type="file" name="afile" /></p>
+                <input type="submit" value="upload file" />
+            </form>
+            <span class="small highlight">This site supports assets import as urls (powered by vite.js):</span>
+            <a href="https://vitejs.dev" target="_blank">
+                <img src="/img/vite.svg" class="logo" alt="Vite logo" />
+            </a>
+            <span class="small highlight">This site supports client-side npm module bundling:</span>
+            <a href="https://www.npmjs.com/package/@mulekick/pepe-ascii" target="_blank">
+                <textarea id="pepe" class="pepe"></textarea>
+            </a>            
+        </main>
+        <!-- main js file -->
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>

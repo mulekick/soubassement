@@ -1,0 +1,14 @@
+{
+    "__rationale": "let vite manage reloads for changes to vite config and static content, ignore builds and uploads",
+    "restartable": "rs",
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules",
+        "vite.*",
+        "build",
+        "static",
+        "upload"
+    ],
+    "verbose": true,
+    "ext": "js,json"
+}

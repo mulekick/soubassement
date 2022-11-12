@@ -1,0 +1,68 @@
+@charset "utf-8";
+@import "mixins";
+
+body {
+    width: 100%;
+    // remove default margin
+    margin: 0px;
+}
+
+main {
+    // content layout management
+    @include flex($direction: column, $align: center, $justify: flex-start);
+    @include box($width: 100%);
+    // additional properties
+    flex-wrap: wrap;
+    margin: 50px calc((100% - 750px) / 2);
+    // stop viewport shrinking
+    width: 750px;
+}
+
+span.large {
+    @include span($size: $font_large);
+    font-family: "Lobster", cursive;
+}
+
+span.small {
+    @include box($width: 100%, $height: 50px);
+    @include span();
+}
+
+span.highlight {
+    color: $color_highlight;
+    padding-bottom: 0;
+
+}
+
+form {
+    // content layout management
+    @include flex($direction: column, $align: left, $justify: flex-start);
+    @include box($width: 100%);
+
+    > * {
+        @include span();
+    }
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    &:hover {
+        filter: drop-shadow(0 0 2em $color_highlight);
+    }
+}
+
+.pepe {
+    height: 300px;
+    width: 315px;
+    border: 0;
+    font-weight: bold;
+    resize: none;
+    color: $color_ft;
+    background-color: $color_bg;
+    &:hover {
+        cursor: pointer;
+        color: $color_highlight;
+    }
+}

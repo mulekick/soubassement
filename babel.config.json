@@ -1,0 +1,20 @@
+{
+    "sourceType": "module",
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "edge": "12",
+                    "firefox": "27",
+                    "chrome": "31",
+                    "safari": "9",
+                    "node": "current"
+                },
+                "useBuiltIns": "usage",
+                "corejs": "3.6.5"
+            }
+        ]
+    ],
+    "plugins": ["babel-plugin-transform-import-meta"]
+}
