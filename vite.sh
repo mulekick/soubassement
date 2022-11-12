@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # app name
-appname="express.sample"
+appname="express.sample.app"
 # vite config file
 vitecfg="vite.config.js"
 # project build folder

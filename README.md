@@ -67,12 +67,6 @@ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in 
 | ```/jest.config.json```  | jest config file **(specifies transforms to apply to code before tests)**                  |
 | ```/babel.config.json``` | babel config file **(preset-env config used by the babel-jest transform)**                 |
 
-## App listen address
-
-* in development mode : ```https://${ VITE_HOST }:${ VITE_PORT }```
-
-* in production mode :```https://${ APP_HOST }:${ APP_PORT }```
-
 ## Dependencies
 
 | Module                                                                                                              | Usage                                                      |
