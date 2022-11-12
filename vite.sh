@@ -34,7 +34,7 @@ elif [[ $1 = "test" ]]; then
 # -------------------------------------
 # create coverage : for it to remain a valid indication, business logic has to be
 # implemented in separate middleware functions that will sit in the middlewares/
-# folder and be tested with jest before building ...
+# folder and be tested with jest after building ...
 elif [[ $1 = "cover" ]]; then
     NODE_ENV=production npx jest --config ./jest.config.json --coverage
 # -------------------------------------
