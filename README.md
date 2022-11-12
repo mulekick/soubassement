@@ -113,3 +113,7 @@ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in 
 2. I am keeping an eye on <code>[vitest](https://vitest.dev/)</code> to use as a replacement for the jest + babel combo for running tests (their argument about the redundancy in jest and vite forcing users to configure two different pipelines is irrefutable)
 
 3. <code>[vavite](https://github.com/cyco130/vavite)</code> looks interesting, but I don't see (as of now) the need to perform treeshaking or transpiling on the server code (unless you're using typescript), because a) you're supposed to be in control of which node.js version your app will run on and b) diskspace is not that expensive so you can live with a few kB of unused client modules in your server's filesystem. That's why I chose to silo the frontend and the backend, use vite only for what it is designed to do and rely on time-tested <code>[nodemon](https://www.npmjs.com/package/nodemon)</code> for the backend; that said, if <code>[vavite](https://github.com/cyco130/vavite)</code> is supported in the long run and takes off, I may reconsider.
+
+4. I received this mail a few hours after making this repo public. That's very nice from them to remind me that the **sample** EC key pair that sits in the dotenv files is exposed, but when I clicked that link and was asked to grant them the permission to act on my behalf on github, I passed 😐
+   
+   ![This is a alt text.](https://i.imgur.com/tJPzwCS.png "I don't doubt that they're nice people, but they're not related to github.")
