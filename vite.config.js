@@ -97,11 +97,16 @@ export default defineConfig(({command, mode}) => {
             plugins: [
                 legacy({
                     // target every browser that support TLS 1.2 and beyond
+                    // (cf. https://wiki.mozilla.org/Security/Server_Side_TLS)
                     targets: {
-                        edge: `12`,
                         firefox: `27`,
+                        android: `4.4.2`,
                         chrome: `31`,
-                        safari: `9`
+                        edge: `12`,
+                        ie: `11`,
+                        opera: `20`,
+                        safari: `9`,
+                        node: `current`
                     }
                 })
                 /*
