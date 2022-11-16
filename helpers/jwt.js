@@ -17,7 +17,7 @@ const
         createPublicKey(cert, {format: `pem`})
     ],
     // create jwt string from payload object
-    sign = payload => new SignJWT(payload)
+    signToken = payload => new SignJWT(payload)
         // signing key algorithm
         .setProtectedHeader({alg: APP_KEYPAIR_ALG})
         // relevant to delivering a token
@@ -31,11 +31,11 @@ const
         // sign with server private key
         .sign(prvk),
     // verify jwt signature from string
-    verify = token => jwtVerify(token, pubk, {
+    verifyToken = token => jwtVerify(token, pubk, {
         // validate algorithm
         algorithms: [ APP_KEYPAIR_ALG ],
         // validate token subject
         subject: `urn:${ s }`
     });
 
-export {sign, verify};
+export {signToken, verifyToken};

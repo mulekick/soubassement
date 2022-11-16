@@ -10,8 +10,6 @@ package-lock.json
 build
 # exclude test uploads
 uploads/*
-# exclude debug / settings
-.vscode
 # exclude jest coverage files
 coverage
 # exclude irrelevant files

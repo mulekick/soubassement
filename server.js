@@ -48,6 +48,8 @@ if (process.env.NODE_ENV === `production`) {
         viteApp = fork(resolve(dirName, `node_modules/vite/bin/vite.js`), [ `serve` ], {
             // submit to abort controller signal for termination
             signal: controller.signal,
+            // not-so-obvious default option
+            env: process.env,
             // use SIGTERM
             killSignal: `SIGTERM`
         });

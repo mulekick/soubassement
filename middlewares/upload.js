@@ -14,6 +14,9 @@ const
     // file upload middleware function
     // async I/O operation requires try...catch in express 4
     mupload = async(req, res, next) => {
+        // form parsing cannot be assessed to be business agnostic, there's also fields
+        // in the form that have to be processed according to business logic, that's why
+        // I opted to keep the form processing inside a middleware over using a helper ...
         try {
 
             const

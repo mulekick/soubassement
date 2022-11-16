@@ -3,7 +3,7 @@ import console from "node:console";
 
 // import modules
 import config from "../config.js";
-import {sign, verify} from "../helpers/jwt.js";
+import {signToken, verifyToken} from "../helpers/jwt.js";
 
 const
     // destructure config values
@@ -13,7 +13,7 @@ const
         try {
             const
                 // create token from payload
-                token = await sign({
+                token = await signToken({
                     permission: `access to protected content granted`
                 });
 
@@ -48,7 +48,7 @@ const
             if (req.cookies[APP_COOKIE_NAME]) {
                 const
                     // read token claims
-                    {payload: {permission}} = await verify(req.cookies[APP_COOKIE_NAME]);
+                    {payload: {permission}} = await verifyToken(req.cookies[APP_COOKIE_NAME]);
                 // success
                 console.log(`received valid client token for '${ permission }'`);
                 // process to next middleware
