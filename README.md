@@ -33,6 +33,7 @@ Basic express use case that embarks all the necessary boilerplate stuff to suppo
 - `npm run dev`
    - starts the app in development mode (vite.js serves the source files)
    - the vite.js dev server listens at ```https://${ VITE_HOST }:${ VITE_PORT }```
+   - source files are served at ```/```
    - HMR and auto-reload are enabled, and vite.js proxies requests to the app's api
 - `npm run build`
    - builds (transpiles, treeshakes and bundles) the source files using vite.js
@@ -43,6 +44,7 @@ Basic express use case that embarks all the necessary boilerplate stuff to suppo
 - `npm run prod`
    - starts the app in production mode (the app serves the build files)
    - the app listens at ```https://${ APP_HOST }:${ APP_PORT }```
+   - build files are served at ```/```
 - `npm run dockerize` *(only works if docker is installed)*
    - creates a docker image and packs the build and the app in it
    - starts an interactive container from the image with ```APP_PORT``` mapped to the corresponding host port 
@@ -60,7 +62,7 @@ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in 
 | ```/middlewares/*.js```      | export middlewares that implement your business logic                                      |
 | ```/middlewares/*.test.js``` | jest test units files for your business logic                                              |
 | ```/helpers/*.js```          | export your business agnostic code                                                         |
-| ```/static/*```              | statically served source files (development) eg. your SPA's index.html (served on ```/```) |
+| ```/static/*```              | statically served source files (development) eg. your SPA's index.html                     |
 | ```/build/*```               | statically served build files (production)                                                 |
 | ```/build.test/*.test.js```  | jest + puppeteer test units files for your app's UX/UI build                               |
 | ```/.env.files/.env.*```     | dotenv config files for environment and production                                         |
