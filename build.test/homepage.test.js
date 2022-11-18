@@ -8,7 +8,7 @@ import {fork} from "node:child_process";
 // import modules
 import puppeteer from "puppeteer";
 import {getDocument, queries, waitFor} from "pptr-testing-library";
-import config from "./config.js";
+import config from "../config.js";
 
 const
     // destructure config values

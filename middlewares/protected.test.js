@@ -26,19 +26,19 @@ describe(`test protected resources fetching`, () => {
     });
 
     describe(`token request middleware`, () => {
-        test(`should return a HTTP 201`, async() => {
+        it(`should return a HTTP 201`, async() => {
             // call middleware
             await mtoken(mockRequest, mockResponse, mockNext);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(201);
         });
-        test(`should add set-cookie header to response`, async() => {
+        it(`should add set-cookie header to response`, async() => {
             // call middleware
             await mtoken(mockRequest, mockResponse, mockNext);
             // actual test
             expect(mockResponse.cookie).toHaveBeenCalled();
         });
-        test(`should end response`, async() => {
+        it(`should end response`, async() => {
             // call middleware
             await mtoken(mockRequest, mockResponse, mockNext);
             // actual test
@@ -47,7 +47,7 @@ describe(`test protected resources fetching`, () => {
     });
 
     describe(`protection middleware (no token)`, () => {
-        test(`should pass error to next()`, async() => {
+        it(`should pass error to next()`, async() => {
             // call middleware
             await mprotection(mockRequest, mockResponse, mockNext);
             // actual test
@@ -56,13 +56,13 @@ describe(`test protected resources fetching`, () => {
     });
 
     describe(`fallback middleware`, () => {
-        test(`should return a HTTP 200`, () => {
+        it(`should return a HTTP 200`, () => {
             // call middleware
             mfallback(mockRequest, mockResponse, mockNext);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(200);
         });
-        test(`should return a default message`, () => {
+        it(`should return a default message`, () => {
             // call middleware
             mfallback(mockRequest, mockResponse, mockNext);
             // actual test

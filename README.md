@@ -6,7 +6,7 @@ Basic express use case that embarks all the necessary boilerplate stuff to suppo
 * Stateless client-side sessions management with <code>[JSON web tokens](https://jwt.io/)</code> (using <code>[jose](https://github.com/panva/jose)</code> and <code>[cookie-parser](https://www.npmjs.com/package/cookie-parser)</code>)
 * Bundling code / dependencies into builds that target every TLSv1.2+ compatible browsers (using <code>[vite](https://vitejs.dev/)</code>)
 * Server-side business logic automated tests (using <code>[jest](https://jestjs.io/)</code>)
-* Client-side UX/UI automated tests (using <code>[testing-library](https://testing-library.com/)</code> and <code>[jest](https://jestjs.io/)</code>)
+* Client-side UX/UI automated tests (using <code>[jest](https://jestjs.io/)</code>, <code>[testing-library](https://testing-library.com/)</code> and <code>[puppeteer](https://pptr.dev/)</code>)
 * Server auto-restart on file changes during development (using <code>[nodemon](https://nodemon.io/)</code>)
 * HMR and browser auto-reload on file change during development (using <code>[vite](https://vitejs.dev/)</code>)
 
@@ -51,50 +51,54 @@ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in 
 
 ## App file system
 
-| path                     | comments                                                                                   |
-|--------------------------|--------------------------------------------------------------------------------------------|
-| ```/server.js```         | express.js app main file                                                                   |
-| ```/config.js```         | express.js app config file                                                                 |
-| ```/routes/routes.js```  | export a single router that will be mounted on ```/${ VITE_SRV_ENTRYPOINT }```             |
-| ```/routes/```           | export routers that you will import in ```routes.js```                                     |
-| ```/middlewares/```      | export middlewares that implement your business logic                                      |
-| ```/helpers/```          | export your business agnostic code                                                         |
-| ```/static/```           | statically served source files (development) eg. your SPA's index.html (served on ```/```) |
-| ```/build/```            | statically served build files (production)                                                 |
-| ```/.env.files/```       | dotenv config files for environment and production                                         |
-| ```/nodemon.json```      | nodemon config file                                                                        |
-| ```/vite.config.js```    | vite.js config file **(specifies rollup entrypoints for vite build)**                      |
-| ```/jest.config.json```  | jest config file **(specifies transforms to apply to code before tests)**                  |
-| ```/babel.config.json``` | babel config file **(preset-env config used by the babel-jest transform)**                 |
+| path                         | comments                                                                                   |
+|------------------------------|--------------------------------------------------------------------------------------------|
+| ```/server.js```             | express.js app main file                                                                   |
+| ```/config.js```             | express.js app config file                                                                 |
+| ```/routes/routes.js```      | export a single router that will be mounted on ```/${ VITE_SRV_ENTRYPOINT }```             |
+| ```/routes/*.js```           | export routers that you will import in ```routes.js```                                     |
+| ```/middlewares/*.js```      | export middlewares that implement your business logic                                      |
+| ```/middlewares/*.test.js``` | jest test units files for your business logic                                              |
+| ```/helpers/*.js```          | export your business agnostic code                                                         |
+| ```/static/*```              | statically served source files (development) eg. your SPA's index.html (served on ```/```) |
+| ```/build/*```               | statically served build files (production)                                                 |
+| ```/build.test/*.test.js```  | jest + puppeteer test units files for your app's UX/UI build                               |
+| ```/.env.files/.env.*```     | dotenv config files for environment and production                                         |
+| ```/nodemon.json```          | nodemon config file                                                                        |
+| ```/vite.config.js```        | vite.js config file **(specifies rollup entrypoints for vite build)**                      |
+| ```/jest.config.json```      | jest config file **(specifies transforms to apply to code before tests)**                  |
+| ```/babel.config.json```     | babel config file **(preset-env config used by the babel-jest transform)**                 |
 
 ## Dependencies
 
-| Module                                                                                                              | Usage                                                      |
-| --------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------- |
-| <code>[@mulekick/pepe-ascii](https://www.npmjs.com/package/@mulekick/pepe-ascii)</code>                             | used as an example of client-side module bundling          |
-| <code>[cookie-parser](https://www.npmjs.com/package/cookie-parser)</code>                                           | parse cookies from HTTP requests header                    |
-| <code>[cors](https://www.npmjs.com/package/cors)</code>                                                             | serve or reject cross origin requests                      |
-| <code>[dotenv](https://www.npmjs.com/package/dotenv)</code>                                                         | load server environment variables                          |
-| <code>[express](https://www.npmjs.com/package/express)</code>                                                       | node.js web server framework                               |
-| <code>[formidable](https://www.npmjs.com/package/formidable)</code>                                                 | handle multipart data and file uploads                     |
-| <code>[helmet](https://www.npmjs.com/package/helmet)</code>                                                         | add security-related headers to HTTP responses             |
-| <code>[jose](https://www.npmjs.com/package/jose)</code>                                                             | JSON web tokens javascript implementation                  |
-| <code>[morgan](https://www.npmjs.com/package/morgan)</code>                                                         | HTTP logger for express.js                                 |
+| Module                                                                                                              | Usage                                             |
+| --------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| <code>[@mulekick/pepe-ascii](https://www.npmjs.com/package/@mulekick/pepe-ascii)</code>                             | used as an example of client-side module bundling |
+| <code>[cookie-parser](https://www.npmjs.com/package/cookie-parser)</code>                                           | parse cookies from HTTP requests header           |
+| <code>[cors](https://www.npmjs.com/package/cors)</code>                                                             | serve or reject cross origin requests             |
+| <code>[dotenv](https://www.npmjs.com/package/dotenv)</code>                                                         | load server environment variables                 |
+| <code>[express](https://www.npmjs.com/package/express)</code>                                                       | node.js web server framework                      |
+| <code>[formidable](https://www.npmjs.com/package/formidable)</code>                                                 | handle multipart data and file uploads            |
+| <code>[helmet](https://www.npmjs.com/package/helmet)</code>                                                         | add security-related headers to HTTP responses    |
+| <code>[jose](https://www.npmjs.com/package/jose)</code>                                                             | JSON web tokens javascript implementation         |
+| <code>[morgan](https://www.npmjs.com/package/morgan)</code>                                                         | HTTP logger for express.js                        |
                         
 ## Dev dependencies
                         
-| Module                                                                                                              | Usage                                                      |
-| --------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| <code>[@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)</code>                                   | required by babel-jest to compile the code before tests    |
-| <code>[@vitejs/plugin-legacy](https://www.npmjs.com/package/@vitejs/plugin-legacy)</code>                           | enable legacy browsers support in vite.js builds           |
-| <code>[jest](https://www.npmjs.com/package/jest)</code>                                                             | delightful javascript testing                              |
-| <code>[babel-plugin-transform-import-meta](https://www.npmjs.com/package/babel-plugin-transform-import-meta)</code> | babel transforms import.meta into legacy code in node.js   |
-| <code>[node-fetch](https://www.npmjs.com/package/node-fetch)</code>                                                 | light-weight module that brings fetch API to node.js       |
-| <code>[nodemon](https://www.npmjs.com/package/nodemon)</code>                                                       | watch server files and auto restart on file change         |
-| <code>[sass](https://www.npmjs.com/package/sass)</code>                                                             | auto-compile SCSS files to CSS in vite.js builds           |
-| <code>[terser](https://www.npmjs.com/package/terser)</code>                                                         | required for minification during the vite.js build process |
-| <code>[vite](https://www.npmjs.com/package/vite)</code>                                                             | next generation froontend tooling                          |
-| <code>[vite-plugin-webfont-dl](https://www.npmjs.com/package/vite-plugin-webfont-dl)</code>                         | extracts, downloads and injects fonts during the build     |
+| Module                                                                                                              | Usage                                                                |
+| --------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| <code>[@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)</code>                                   | required by babel-jest to compile the code before tests              |
+| <code>[@vitejs/plugin-legacy](https://www.npmjs.com/package/@vitejs/plugin-legacy)</code>                           | enable legacy browsers support in vite.js builds                     |
+| <code>[babel-plugin-transform-import-meta](https://www.npmjs.com/package/babel-plugin-transform-import-meta)</code> | babel transforms import.meta into legacy code in node.js             |
+| <code>[jest](https://www.npmjs.com/package/jest)</code>                                                             | delightful javascript testing                                        |
+| <code>[node-fetch](https://www.npmjs.com/package/node-fetch)</code>                                                 | light-weight module that brings fetch API to node.js                 |
+| <code>[nodemon](https://www.npmjs.com/package/nodemon)</code>                                                       | watch server files and auto restart on file change                   |
+| <code>[pptr-testing-library](https://www.npmjs.com/package/pptr-testing-library)</code>                             | testing-library based querying functions for puppeteer               |
+| <code>[puppeteer](https://www.npmjs.com/package/puppeteer)</code>                                                   | high-level API to control Chrome/Chromium over the DevTools Protocol |
+| <code>[sass](https://www.npmjs.com/package/sass)</code>                                                             | auto-compile SCSS files to CSS in vite.js builds                     |
+| <code>[terser](https://www.npmjs.com/package/terser)</code>                                                         | required for minification during the vite.js build process           |
+| <code>[vite](https://www.npmjs.com/package/vite)</code>                                                             | next generation froontend tooling                                    |
+| <code>[vite-plugin-webfont-dl](https://www.npmjs.com/package/vite-plugin-webfont-dl)</code>                         | extracts, downloads and injects fonts during the build               |
 
 ## Notes
 

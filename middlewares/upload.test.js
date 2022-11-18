@@ -29,7 +29,7 @@ describe(`test file upload `, () => {
     // thus we can only test the error throwing on an invalid request ...
 
     describe(`upload middleware`, () => {
-        test(`should pass error to next()`, async() => {
+        it(`should pass error to next()`, async() => {
             // call middleware
             await mupload(mockRequest, mockResponse, mockNext);
             // actual test

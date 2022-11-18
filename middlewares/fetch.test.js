@@ -24,13 +24,13 @@ describe(`test unprotected resources fetching`, () => {
     });
 
     describe(`main middleware`, () => {
-        test(`should return a HTTP 200`, () => {
+        it(`should return a HTTP 200`, () => {
             // call middleware
             mfetch(mockRequest, mockResponse, mockNext);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(200);
         });
-        test(`should return a SHA-256 hash`, () => {
+        it(`should return a SHA-256 hash`, () => {
             // call middleware
             mfetch(mockRequest, mockResponse, mockNext);
             // actual test
@@ -39,13 +39,13 @@ describe(`test unprotected resources fetching`, () => {
     });
 
     describe(`fallback middleware`, () => {
-        test(`should return a HTTP 200`, () => {
+        it(`should return a HTTP 200`, () => {
             // call middleware
             mfallback(mockRequest, mockResponse, mockNext);
             // actual test
             expect(mockResponse.status).toHaveBeenCalledWith(200);
         });
-        test(`should return a default message`, () => {
+        it(`should return a default message`, () => {
             // call middleware
             mfallback(mockRequest, mockResponse, mockNext);
             // actual test
