@@ -14,3 +14,5 @@ uploads/*
 coverage
 # exclude irrelevant files
 *.old
+# exclude puppeteer screenshots
+screenshot*
