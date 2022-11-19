@@ -90,6 +90,7 @@ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in 
 | Module                                                                                                              | Usage                                                                |
 | --------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | <code>[@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)</code>                                   | required by babel-jest to compile the code before tests              |
+| <code>[@mulekick/eslint-config-muleslint](https://www.npmjs.com/package/@mulekick/eslint-config-muleslint)</code>   | Mulekicks's base JS / Node ESLint configuration                      |
 | <code>[@vitejs/plugin-legacy](https://www.npmjs.com/package/@vitejs/plugin-legacy)</code>                           | enable legacy browsers support in vite.js builds                     |
 | <code>[babel-plugin-transform-import-meta](https://www.npmjs.com/package/babel-plugin-transform-import-meta)</code> | babel transforms import.meta into legacy code in node.js             |
 | <code>[jest](https://www.npmjs.com/package/jest)</code>                                                             | delightful javascript testing                                        |
