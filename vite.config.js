@@ -93,22 +93,16 @@ export default defineConfig(({command, mode}) => {
                     }
                 }
             },
-            // plugins
+            // load postcss config (.postcssrc.json)
+            // postcss plugins will be used for serve and build
+            css: {postcss: `.`},
+            // vite plugins config
             plugins: [
-                legacy({
-                    // target every browser that support TLS 1.2 and beyond
-                    // (cf. https://wiki.mozilla.org/Security/Server_Side_TLS)
-                    targets: {
-                        firefox: `27`,
-                        android: `4.4.2`,
-                        chrome: `31`,
-                        edge: `12`,
-                        ie: `11`,
-                        opera: `20`,
-                        safari: `9`,
-                        node: `current`
-                    }
-                })
+                // target every browser that support TLS 1.2 and beyond
+                // (@babel/preset-env will auto-detect .browserslistrc)
+                // (cf. https://wiki.mozilla.org/Security/Server_Side_TLS)
+                // (cf. https://caniuse.com/tls1-2)
+                legacy({})
                 /*
                 // self-host third-party webfonts to avoir render blocking behavior
 

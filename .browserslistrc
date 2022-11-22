@@ -1,0 +1,23 @@
+# browserslist queries targeting eveything that supports TLSv1.2+
+# automatically detected by :
+#  - @babel/preset-env to compile for jest
+#  - @vitejs/plugin-legacy for the build targets
+#  - postcss for the css transformations
+
+ChromeAndroid >= 107
+Chrome >= 31
+iOS >= 5
+Edge >= 12
+Safari >= 7
+Firefox >= 27
+Samsung >= 4
+Opera >= 16
+UCAndroid >= 13.4
+Explorer >= 11
+Android >= 107
+FirefoxAndroid >= 106
+and_qq >= 13.1
+kaios >= 2.5
+op_mob >= 12.1
+Baidu >= 13.18
+Node >= 16

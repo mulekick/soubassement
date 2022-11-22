@@ -4,7 +4,7 @@ Basic express use case that embarks all the necessary boilerplate stuff to suppo
 
 * File uploads and multipart form data handling (using <code>[formidable](https://github.com/node-formidable/formidable)</code>)
 * Stateless client-side sessions management with <code>[JSON web tokens](https://jwt.io/)</code> (using <code>[jose](https://github.com/panva/jose)</code> and <code>[cookie-parser](https://www.npmjs.com/package/cookie-parser)</code>)
-* Bundling code / dependencies into builds that target every TLSv1.2+ compatible browsers (using <code>[vite](https://vitejs.dev/)</code>)
+* Bundling code / dependencies into builds that target every TLSv1.2+ compatible browsers (using <code>[vite](https://vitejs.dev/)</code> and <code>[postcss](https://postcss.org/)</code>)
 * Server-side business logic automated tests (using <code>[jest](https://jestjs.io/)</code>)
 * Client-side UX/UI automated tests (using <code>[jest](https://jestjs.io/)</code>, <code>[testing-library](https://testing-library.com/)</code> and <code>[puppeteer](https://pptr.dev/)</code>)
 * Server auto-restart on file changes during development (using <code>[nodemon](https://nodemon.io/)</code>)
@@ -67,9 +67,11 @@ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in 
 | ```/build.test/*.test.js```  | jest + puppeteer test units files for your app's UX/UI build                               |
 | ```/.env.files/.env.*```     | dotenv config files for environment and production                                         |
 | ```/nodemon.json```          | nodemon config file                                                                        |
-| ```/vite.config.js```        | vite.js config file **(specifies rollup entrypoints for vite build)**                      |
-| ```/jest.config.json```      | jest config file **(specifies transforms to apply to code before tests)**                  |
-| ```/babel.config.json```     | babel config file **(preset-env config used by the babel-jest transform)**                 |
+| ```/vite.config.js```        | vite.js config file (specifies rollup entrypoints for vite build)                          |
+| ```/jest.config.json```      | jest config file (specifies transforms to apply to code before tests)                      |
+| ```/babel.config.json```     | babel config file (preset-env config used by the babel-jest transform)                     |
+| ```/.postcssrc.json```       | postcss config file (includes postcss plugins that will be leveraged by vite)              |
+| ```/.browserslistrc```       | <code>[browserslist](https://browsersl.ist/)</code> file used by babel and autoprefixer    |
 
 ## Dependencies
 
@@ -92,10 +94,12 @@ All the ```VITE_*``` and ```APP_*``` environment variables can be configured in 
 | <code>[@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)</code>                                   | required by babel-jest to compile the code before tests              |
 | <code>[@mulekick/eslint-config-muleslint](https://www.npmjs.com/package/@mulekick/eslint-config-muleslint)</code>   | Mulekicks's base JS / Node ESLint configuration                      |
 | <code>[@vitejs/plugin-legacy](https://www.npmjs.com/package/@vitejs/plugin-legacy)</code>                           | enable legacy browsers support in vite.js builds                     |
+| <code>[autoprefixer](https://github.com/postcss/autoprefixer)</code>                                                | postcss plugin that adds vendor-specific prefixes to CSS rules       |
 | <code>[babel-plugin-transform-import-meta](https://www.npmjs.com/package/babel-plugin-transform-import-meta)</code> | babel transforms import.meta into legacy code in node.js             |
 | <code>[jest](https://www.npmjs.com/package/jest)</code>                                                             | delightful javascript testing                                        |
 | <code>[node-fetch](https://www.npmjs.com/package/node-fetch)</code>                                                 | light-weight module that brings fetch API to node.js                 |
 | <code>[nodemon](https://www.npmjs.com/package/nodemon)</code>                                                       | watch server files and auto restart on file change                   |
+| <code>[postcss](https://postcss.org/)</code>                                                                        | a tool for transforming CSS with JavaScript                          |
 | <code>[pptr-testing-library](https://www.npmjs.com/package/pptr-testing-library)</code>                             | testing-library based querying functions for puppeteer               |
 | <code>[puppeteer](https://www.npmjs.com/package/puppeteer)</code>                                                   | high-level API to control Chrome/Chromium over the DevTools Protocol |
 | <code>[sass](https://www.npmjs.com/package/sass)</code>                                                             | auto-compile SCSS files to CSS in vite.js builds                     |
